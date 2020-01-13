@@ -24,5 +24,23 @@ import Foundation
 
 public func sortedArrayToBST(_ nums: [Int]) -> TreeNode? {
     
-    return nil
+    var nums = nums
+    guard !nums.isEmpty else {
+        return nil
+    }
+    var val = nums[nums.count/2]
+    let node = TreeNode(val)
+    var indexLeft = 0
+    let leftList = nums.filter { _ in
+        defer { indexLeft += 1}
+        return (indexLeft >= 0 && indexLeft < nums.count/2) ? true : false
+    }
+    node.left = sortedArrayToBST(leftList)
+    var indexRight = 0
+    let rightList = nums.filter { _ in
+        defer { indexRight += 1 }
+        return (indexRight > nums.count/2) ? true  : false
+    }
+    node.right = sortedArrayToBST(rightList)
+    return node
 }
