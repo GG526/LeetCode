@@ -23,7 +23,6 @@ import Foundation
  */
 
 public func sortedArrayToBST(_ nums: [Int]) -> TreeNode? {
-    
     var nums = nums
     guard !nums.isEmpty else {
         return nil
