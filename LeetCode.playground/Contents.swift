@@ -1,8 +1,7 @@
 import Foundation
 
-isPalindrome("A man, a plan, ")
+
+//singleNumber2([10, 20, 10, 20, 5, 5, 3, 3, 2])
 
 
-
-
-
+14 ^ 13
