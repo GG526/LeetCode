@@ -1,7 +1,7 @@
 import Foundation
 
 public class ListNode: Equatable {
-    var val: Int
+    let val: Int
     var next: ListNode?
     let id: UUID
     
