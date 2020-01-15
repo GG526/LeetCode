@@ -1,7 +1,7 @@
 import Foundation
 
-
-//singleNumber2([10, 20, 10, 20, 5, 5, 3, 3, 2])
-
-
-14 ^ 13
+var sta = MinStack()
+sta.push(9)
+sta.pop()
+let value = sta.top()
+let value2 = sta.getMin()
