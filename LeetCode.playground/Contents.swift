@@ -1,4 +1,6 @@
 import Foundation
 
-reverseBits2(0b11111111111111111111111111111101)
- 
+
+containsDuplicate([1,1,1,3,3,4,3,2,4,2])
+
+
