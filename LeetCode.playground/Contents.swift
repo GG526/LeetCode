@@ -1,7 +1,4 @@
 import Foundation
 
-var sta = MinStack()
-sta.push(9)
-sta.pop()
-let value = sta.top()
-let value2 = sta.getMin()
+reverseBits2(0b11111111111111111111111111111101)
+ 

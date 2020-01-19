@@ -21,6 +21,7 @@ import Foundation
 
 public func trailingZeroes(_ n: Int) -> Int {
     var count = 0
+    var n = n
     while n > 0 {
         count += n/5
         n /= 5

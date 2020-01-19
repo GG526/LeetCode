@@ -28,5 +28,20 @@ import Foundation
  */
 
 public func rotate(_ nums: inout [Int], _ k: Int) {
+    guard k > 0  else {
+        return
+    }
     
+    guard nums.count > 1 else {
+        return
+    }
+    
+    var k = k
+    while k > 0 {
+        if let last = nums.last {
+            nums.removeLast()
+            nums.insert(last, at: 0)
+        }
+        k -= 1
+    }
 }
