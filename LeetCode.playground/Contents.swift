@@ -1,6 +1,9 @@
 import Foundation
 
+[1, 2].reduce(0) { (result, item) -> Int in
+    return result + item
+}
 
-containsDuplicate([1,1,1,3,3,4,3,2,4,2])
-
-
+[1, 2].reduce(into: 0) { (result, item) in
+    result += item
+}
