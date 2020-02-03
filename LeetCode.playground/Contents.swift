@@ -1,4 +1,4 @@
 import Foundation
 
 
-firstUniqChar("aa")
+lengthOfLongestSubstring("pwwkew")

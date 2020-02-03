@@ -18,5 +18,27 @@ import Foundation
  */
 
 public func addTwoNumbers(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
-    
+    var carryBit = 0
+    var l1 = l1
+    var l2 = l2
+    var head: ListNode?
+    var first: ListNode?
+    while l1 != nil || l2 != nil {
+        let value = (l1?.val ?? 0) + (l2?.val ?? 0) + carryBit
+        carryBit = value / 10
+        let node = ListNode(value % 10)
+        if head == nil {
+            head = node
+            first = head
+        } else {
+            head?.next = node
+        }
+        head = node
+        l1 = l1?.next
+        l2 = l2?.next
+    }
+    if carryBit != 0 {
+        head?.next = ListNode(carryBit)
+    }
+    return first
 }
