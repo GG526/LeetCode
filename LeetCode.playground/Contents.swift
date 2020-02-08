@@ -1,4 +1,3 @@
 import Foundation
 
-
-lengthOfLongestSubstring("pwwkew")
+profit([7,1,5,3,6,4])

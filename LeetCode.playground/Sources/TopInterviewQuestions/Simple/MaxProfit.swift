@@ -21,6 +21,11 @@ import Foundation
  解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。
 
  
+ 
+ dp[i][k][0] = max(dp[i - 1][k][0], dp[i - 1][k][1] + price[i]) 今天不持有股票 1. 昨天不持有, 2. 昨天持有然后今天卖了
+ dp[i][k][1] = max(dp[i - 1][k][1], dp[i - 1][k - 1][0] - price[i]) 今天持有股票 1. 昨天持有, 2. 昨天c不持有今天买了
+ 
+ 
  */
 
 
@@ -35,4 +40,50 @@ public func maxProfit(_ prices: [Int]) -> Int {
         }
     }
     return maxProfit
+}
+
+
+
+public func profit(_ prices: [Int]) -> Int {
+    var dpI0 = 0, dpI1 = Int.min
+    prices.forEach({
+        dpI0 = max(dpI0, dpI1 + $0)
+        dpI1 = max(dpI1, -$0)
+    })
+    return dpI0
+}
+
+
+
+public func maxProfit_k_inf(_ prices: [Int]) -> Int {
+    var i0 = 0, i1 = Int.min
+    prices.forEach({
+        let temp = i0
+        i0 = max(i0, i0 + $0)
+        i1 = max(i1, temp - $0)
+    })
+    return i0
+}
+
+public func maxProfit_k_any(_ maxK: Int, prices:[Int]) -> Int {
+    if maxK > prices.count/2 {
+        return maxProfit_k_inf(prices)
+    }
+    var arr = Array.init(repeating: Array.init(repeating: Array.init(repeating: 0, count: 2), count: maxK), count: prices.count)
+    var i = 0
+    while i < prices.count {
+        var k = maxK
+        while k > 1 {
+            if i == 0 {
+                arr[i][k][0] = 0
+                arr[i][k][1] = -prices[i]
+                continue
+            }
+            arr[i][k][0] = max(arr[i - 1][k][0], arr[i - 1][k][1] + prices[i])
+            arr[i][k][1] = max(arr[i - 1][k][1], arr[i - 1][k - 1][0] - prices[i])
+            k -= 1
+        }
+        i += 1
+    }
+    return arr[prices.count - 1][maxK][0]
 }

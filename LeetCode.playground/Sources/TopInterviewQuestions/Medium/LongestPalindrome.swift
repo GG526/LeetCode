@@ -22,5 +22,38 @@ import Foundation
 
 
 public func longestPalindrome(_ s: String) -> String {
-    return ""
+    guard s.count > 1 else {
+        return s
+    }
+    let list = Array(s)
+    var dp = [[Bool]](), x = 0
+    dp = Array.init(repeating: Array.init(repeating: false, count: list.count), count: list.count)
+    while x < list.count {
+        dp[x][x] = true
+        x += 1
+    }
+    var i = 1, index = 0, length = 1
+    while i < list.count {
+        var j = 0
+        while j < i {
+            if list[j] == list[i] {
+                if i - j < 3 {
+                    dp[j][i] = true
+                }else {
+                    dp[j][i] = dp[j + 1][i - 1]
+                }
+            }else {
+                dp[j][i] = false
+            }
+            if dp[j][i], i - j + 1 > length {
+                index = j
+                length = i - j + 1
+            }
+            j += 1
+        }
+        i += 1
+    }
+    print(index, length)
+    return s.subString(from: index, length: length)
+    
 }

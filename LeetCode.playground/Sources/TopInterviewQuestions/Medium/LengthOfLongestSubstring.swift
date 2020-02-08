@@ -83,3 +83,20 @@ public func lengthOfLongestSubstring2(_ s: String) -> Int {
     }
     return ans
 }
+
+
+public func lengthOfLongestSubstring3(_ s: String) -> Int {
+    let list = Array(s)
+    var i = 0, j = 0, ans = 0, dic = [Character: Int]()
+    while j < list.count{
+        if dic.contains(where: { (key, value) -> Bool in
+            return key == list[j]
+        }) {
+            i = max(i, dic[list[j]] ?? 0)
+        }
+        ans = max(ans, j - i)
+        dic.updateValue(j, forKey: list[i])
+        j += 1
+    }
+    return ans
+}

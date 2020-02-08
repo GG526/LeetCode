@@ -24,7 +24,7 @@ public extension String {
     }
     
     func subString(from i: Int, length l: Int) -> String {
-        guard i + l < count else {
+        guard i + l <= count else {
             return self
         }
         let start = index(startIndex, offsetBy: i)

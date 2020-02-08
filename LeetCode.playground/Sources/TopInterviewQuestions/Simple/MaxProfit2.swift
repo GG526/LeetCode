@@ -64,6 +64,7 @@ public func maxProfit22(_ prices: [Int]) -> Int {
         if prices[i] < prices[i + 1] {
             maxProfit += (prices[i + 1] - prices[i])
         }
+        i += 1
     }
     return maxProfit
 }
