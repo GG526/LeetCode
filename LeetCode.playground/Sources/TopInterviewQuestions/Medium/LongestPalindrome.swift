@@ -18,6 +18,11 @@ import Foundation
  链接：https://leetcode-cn.com/problems/longest-palindromic-substring
  著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  
+ dp[i][j] = dp[i] == dp[j] && dp[i + 1][j - 1]
+ 
+ 
+ j - 1 - (i + 1) + 1 < 2 ===> j - i < 3
+ 
  */
 
 
@@ -26,12 +31,8 @@ public func longestPalindrome(_ s: String) -> String {
         return s
     }
     let list = Array(s)
-    var dp = [[Bool]](), x = 0
+    var dp = [[Bool]]()
     dp = Array.init(repeating: Array.init(repeating: false, count: list.count), count: list.count)
-    while x < list.count {
-        dp[x][x] = true
-        x += 1
-    }
     var i = 1, index = 0, length = 1
     while i < list.count {
         var j = 0

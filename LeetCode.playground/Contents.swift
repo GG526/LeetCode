@@ -1,3 +1,3 @@
 import Foundation
 
-profit([7,1,5,3,6,4])
+threeSum([-1, 0, 1, 2, -1, -4])
