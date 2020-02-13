@@ -23,9 +23,9 @@ import Foundation
 public func letterCombinations(_ digits: String) -> [String] {
  
     guard !digits.isEmpty else {
-        return digits
+        return []
     }
-    var dic = ["2": "abc",
+    let dic = ["2": "abc",
                "3": "def",
                "4": "ghi",
                "5": "jkl",
@@ -35,14 +35,15 @@ public func letterCombinations(_ digits: String) -> [String] {
                "9": "wxyz"]
     var result:[String] = [""]
     digits.forEach({
-        let value = dic[String($0)]
-        result.forEach({
+        let value = dic[String($0)], count = result.count
+        var i = 0
+        while i < count {
             let first = result.remove(at: 0)
             value?.forEach({
-                let str = String($0)
-                result.append(first + $0)
+                result.append(first + String($0))
             })
-        })
+            i += 1
+        }
     })
     return result
 }
