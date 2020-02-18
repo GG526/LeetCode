@@ -44,3 +44,12 @@ public func generateParenthesis(_ n: Int) -> [String] {
     }
     return dp.last ?? []
 }
+
+
+struct a {
+    var b: Int = 0
+    
+    mutating func c() {
+        b = 2
+    }
+}

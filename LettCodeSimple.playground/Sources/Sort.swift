@@ -12,6 +12,20 @@ func mopaoSort(_ nums : inout [Int]) -> [Int] {
     return nums
 }
 
+
+func mopaoSort2(_ nums: inout [Int]) -> [Int] {
+    var i = 0
+    while i < nums.count {
+        var j = 0
+        while j < nums.count - i - 1 {
+            if nums[j] > nums[j + 1] {
+                nums.swapAt(j + 1, j)
+            }
+        }
+    }
+    return nums
+}
+
 func quickSort(_ nums: [Int]) -> [Int] {
     guard nums.count > 1 else {
         return nums
@@ -34,5 +48,20 @@ func selectionSort(_ nums: inout [Int]) -> [Int] {
         guard minIndex != index else { return }
         nums.swapAt(index, minIndex)
     })
+    return nums
+}
+
+
+func selectSort2(_ nums: inout [Int]) -> [Int] {
+    var i = 0
+    while i < n - 1 {
+        var j = i + 1, min = i
+        while j < nums.count {
+            if nums[j] < nums[min] {
+                min = j
+            }
+        }
+        nums.swapAt(i, min)
+    }
     return nums
 }
